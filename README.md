@@ -1,145 +1,58 @@
-FastAPI Example Todo Application
-====================
+# CSC & Upcloud Web Deployment Prototypes - FastAPI Todo App
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://github.com/tiangolo/fastapi)
+[![Rahti](https://img.shields.io/badge/CSC_Rahti-Container_Cloud-blue?style=for-the-badge)](https://rahti.csc.fi)
 
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
-[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
-[![Pre-commit: enabled](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=flat)](https://github.com/pre-commit/pre-commit)
+This repository serves as the practical application prototype for the project **"Web deployment prototypes with CSC and Upcloud"**.
 
-FastAPI example ToDo Application with user authentication.
+It adapts and extends an open-source framework originally built by [borys25ol/fastapi-todo-example-app](https://github.com/borys25ol/fastapi-todo-example-app.git) to implement a decoupled, production-ready backend Todo application, which is used here to systematically evaluate various cloud infrastructure capabilities.
 
-### Stack:
-- FastAPI
-- PostgreSQL
-- SQLAlchemy
-- Alembic
-- Docker
+---
 
-Developing
------------
+### 🛠️ Technology Stack
 
-Install pre-commit hooks to ensure code quality checks and style checks
+- **Framework:** FastAPI (Python)
+- **Database Tools:** SQLAlchemy & Alembic (Migrations)
+- **Target Drivers:** SQLite (Phase V1), PostgreSQL (Phases V2-V4)
+- **Containerization:** Docker & OpenShift S2I Pipelines
 
-    $ make install_hooks
+---
 
-Then see `Configuration` section
+## 🚀 Project Deployment Roadmap
 
-You can also use these commands during dev process:
+To systematically evaluate cloud deployment strategies, this project is structured into three iterative phases:
 
-- To run mypy checks
+### 📍 Phase V1: Standalone Cloud Deployment (Current)
 
-      $ make types
+- **Objective:** Establish the core compute container environment and verify standalone network accessibility.
+- **Infrastructure:** **CSC Rahti (Container Cloud)** via Source-to-Image (S2I) build mechanism.
+- **Database:** Embedded standalone **SQLite** (`todo.db`) for isolated container health and initial API verification.
 
-- To run flake8 checks
+### ⏳ Phase V2: Managed Cloud Database Integration
 
-      $ make style
+- **Objective:** Separate state from compute to achieves "Compute-and-Data Separation".
+- **Infrastructure:** **CSC Rahti** (Compute in Containers) + **CSC Pukki** (Managed PostgreSQL Cluster).
 
-- To run black checks:
+### ⏳ Phase V3: Infrastructure Evolution to IaaS
 
-      $ make format
+- **Objective:** Performance benchmarking between Platform-as-a-Service (Rahti) and Infrastructure-as-a-Service (cPouta Ubuntu VMs).
+- **Sub-Phase V3.1:** All-in-One Architecture (FastAPI App & PostgreSQL coupled locally inside cPouta VM).
+- **Sub-Phase V3.2:** Cloud-Native Disaggregated Architecture (cPouta VM compute node remote-routing to CSC Pukki DB).
 
-- To run together:
+### ⏳ Phase V4: Hybrid Multi-Cloud Topology - UpCloud (VM) + CSC Pukki (Cross-Cloud DB Connectivity)
 
-      $ make lint
+---
 
+## 🌐 Web Routes & API Interaction
 
-Configuration
---------------
+- **API Interactive Dashboard (Swagger UI):** Automatically generated and available directly at the root path `/` (e.g., `http://127.0.0.1:8000/` or assigned public Rahti Route URL).
+- **System Health Gateway:** Available at `/api/v1/status`.
 
-Replace `.env.example` with real `.env`, changing placeholders
+## Project structure
 
-```
-SECRET_KEY=changeme
-POSTGRES_PORT=5432
-POSTGRES_DB=tododb
-POSTGRES_PASSWORD=postgres
-POSTGRES_USER=postgres
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/tododb
-```
-
-Local install
--------------
-
-Setup and activate a python3 virtualenv via your preferred method. e.g. and install production requirements:
-
-    $ make ve
-
-For remove virtualenv:
-
-    $ make clean
-
-
-Local run
--------------
-Run migration to create tables
-
-    $ make migrate
-
-Run pre-start script to check database:
-
-    $  make check_db
-
-Run server with settings:
-
-    $ make runserver
-
-
-Run in Docker
--------------
-
-### !! Note:
-
-If you want to run app in `Docker`, change host in `DATABASE_URL` in `.env` file to name of docker db service:
-
-`DATABASE_URL=postgresql://postgres:postgres@db:5432/tododb`
-
-Run project in Docker:
-
-    $ make docker_build
-
-Stop project in Docker:
-
-    $ make docker_down
-
-## Register user:
-
-    $ curl -X 'POST' \
-        'http://0.0.0.0:5000/api/v1/user' \
-        -H 'accept: application/json' \
-        -H 'Content-Type: application/json' \
-        -d '{
-            "username": "test-user",
-            "email": "test@test.com",
-            "full_name": "Test Test",
-            "password": "weakpassword"
-        }'
-
-If everything is fine, check this endpoint:
-
-    $ curl -X "GET" http://0.0.0.0:5000/api/v1/status
-
-Expected result:
-
-```
-{
-  "success": true,
-  "version": "<version>",
-  "message": "FastAPI Todo Application"
-}
-```
-
-
-Web routes
-----------
-All routes are available on ``/`` or ``/redoc`` paths with Swagger or ReDoc.
-
-
-Project structure
------------------
-Files related to application are in the ``main`` directory.
+Files related to application are in the `main` directory.
 Application parts are:
+
 ```text
 main
 ├── __init__.py
