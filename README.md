@@ -2,6 +2,9 @@
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://github.com/tiangolo/fastapi)
 [![Rahti](https://img.shields.io/badge/CSC_Rahti-Container_Cloud-blue?style=for-the-badge)](https://rahti.csc.fi)
+[![Pukki](https://img.shields.io/badge/CSC_Pukki-Managed_DB_Cluster-orange?style=for-the-badge)](https://pukki.csc.fi)
+[![cPouta](https://img.shields.io/badge/CSC_cPouta-IaaS_Cloud-purple?style=for-the-badge)](https://research.csc.fi/cpouta)
+[![UpCloud](https://img.shields.io/badge/UpCloud-Commercial_IaaS-darkgreen?style=for-the-badge&logo=upcloud)](https://upcloud.com)
 
 This repository serves as the practical application prototype for the project **"Web deployment prototypes with CSC and Upcloud"**.
 
@@ -39,7 +42,8 @@ To systematically evaluate cloud deployment strategies, this project is structur
 - **Sub-Phase V3.1:** All-in-One Architecture (FastAPI App & PostgreSQL coupled locally inside cPouta VM).
 - **Sub-Phase V3.2:** Cloud-Native Disaggregated Architecture (cPouta VM compute node remote-routing to CSC Pukki DB).
 
-### ⏳ Phase V4: Hybrid Multi-Cloud Topology - UpCloud (VM) + CSC Pukki (Cross-Cloud DB Connectivity)
+### ⏳ Phase V4: Hybrid Multi-Cloud Topology 
+- **Infrastructure:** **UpCloud** (VM) + **CSC Pukki** (Cross-Cloud DB Connectivity)
 
 ---
 
