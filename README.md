@@ -4,7 +4,7 @@
 [![Rahti](https://img.shields.io/badge/CSC_Rahti-Container_Cloud-blue?style=for-the-badge)](https://rahti.csc.fi)
 [![Pukki](https://img.shields.io/badge/CSC_Pukki-Managed_DB_Cluster-orange?style=for-the-badge)](https://pukki.csc.fi)
 [![cPouta](https://img.shields.io/badge/CSC_cPouta-IaaS_Cloud-purple?style=for-the-badge)](https://research.csc.fi/cpouta)
-[![UpCloud](https://img.shields.io/badge/UpCloud-Commercial_IaaS-darkgreen?style=for-the-badge&logo=upcloud)](https://upcloud.com)
+[![UpCloud](https://img.shields.io/badge/UpCloud-darkgreen?style=for-the-badge&logo=upcloud)](https://upcloud.com)
 
 This repository serves as the practical application prototype for the project **"Web deployment prototypes with CSC and Upcloud"**.
 
@@ -25,7 +25,7 @@ It adapts and extends an open-source framework originally built by [borys25ol/fa
 
 To systematically evaluate cloud deployment strategies, this project is structured into three iterative phases:
 
-### 📍 Phase V1: Standalone Cloud Deployment (Current)
+### 📍 Phase V1: Standalone Cloud Deployment
 
 - **Objective:** Establish the core compute container environment and verify standalone network accessibility.
 - **Infrastructure:** **CSC Rahti (Container Cloud)** via Source-to-Image (S2I) build mechanism.
