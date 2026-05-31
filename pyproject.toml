@@ -27,3 +27,8 @@ ensure_newline_before_comments = true
 use_parentheses = true
 skip_gitignore = true
 skip_glob = ['.ve', '.git']
+
+# Fix: Force setuptools to discover only the 'main' directory.
+# This prevents flat-layout discovery errors caused by conflict with the parallel 'docker' directory during cloud (S2I) deployment.
+[tool.setuptools.packages.find]
+include = ["main", "main.*"]
