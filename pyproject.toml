@@ -28,7 +28,13 @@ use_parentheses = true
 skip_gitignore = true
 skip_glob = ['.ve', '.git']
 
-# Fix: Force setuptools to discover only the 'main' directory.
-# This prevents flat-layout discovery errors caused by conflict with the parallel 'docker' directory during cloud (S2I) deployment.
-[tool.setuptools.packages.find]
-include = ["main", "main.*"]
+# Modern PEP 621 compliance to satisfy cloud builder requirements
+[project]
+name = "csc-rahti-todo"
+version = "0.1.0"
+description = "A Todo application deployment on CSC Rahti"
+requires-python = ">=3.8"
+
+# Force setuptools to look only at the main module and disable auto-discovery
+[tool.setuptools]
+packages = ["main"]
