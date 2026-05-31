@@ -1,5 +1,5 @@
 
-FROM registry.access.redhat.com/ubi8/python-312
+FROM registry.access.redhat.com/ubi8/python-311
 WORKDIR /opt/app-root/src
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
