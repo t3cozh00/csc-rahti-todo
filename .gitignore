@@ -1,0 +1,16 @@
+.ve
+.idea
+.DS_Store
+__pycache__
+__pycache__/
+.pytest_cache/
+*.pyc
+logs
+.env
+.env.test
+.env.dev
+*.db
+todo.db
+.vscode
+.coverage
+postgres-data
